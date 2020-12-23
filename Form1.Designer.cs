@@ -95,7 +95,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(506, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 32);
+            this.label1.Size = new System.Drawing.Size(166, 36);
             this.label1.TabIndex = 2;
             this.label1.Text = "Мои книги";
             // 
@@ -105,7 +105,7 @@
             this.lblBuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblBuy.Location = new System.Drawing.Point(244, 96);
             this.lblBuy.Name = "lblBuy";
-            this.lblBuy.Size = new System.Drawing.Size(97, 29);
+            this.lblBuy.Size = new System.Drawing.Size(98, 29);
             this.lblBuy.TabIndex = 3;
             this.lblBuy.Text = "Купил:";
             // 
@@ -119,6 +119,7 @@
             this.lvRead.TabIndex = 4;
             this.lvRead.UseCompatibleStateImageBehavior = false;
             this.lvRead.View = System.Windows.Forms.View.List;
+            this.lvRead.SelectedIndexChanged += new System.EventHandler(this.lvRead_SelectedIndexChanged);
             this.lvRead.Enter += new System.EventHandler(this.lvRead_Enter);
             // 
             // lblRead
@@ -127,7 +128,7 @@
             this.lblRead.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblRead.Location = new System.Drawing.Point(733, 96);
             this.lblRead.Name = "lblRead";
-            this.lblRead.Size = new System.Drawing.Size(142, 29);
+            this.lblRead.Size = new System.Drawing.Size(141, 29);
             this.lblRead.TabIndex = 5;
             this.lblRead.Text = "Прочитал:";
             // 
