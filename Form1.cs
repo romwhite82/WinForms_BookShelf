@@ -181,9 +181,6 @@ namespace WindowsFormsApp1
            
         }
 
-        private void lvRead_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
