@@ -45,9 +45,9 @@ namespace WindowsFormsApp1
             MyFunction.ActHandler();
         }
 
-        
+        private void Form2_Load(object sender, EventArgs e)
+        {
 
-
-
+        }
     }
 }

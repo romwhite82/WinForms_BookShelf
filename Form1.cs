@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -77,6 +78,24 @@ namespace WindowsFormsApp1
                 }
 
             };
+
+            try
+            {
+                string[] lvBuyInit = File.ReadAllLines(@"D:\books.dat");
+
+                foreach (string str in lvBuyInit)
+                {
+                    char[] separator = new char[] { '$', '$' };
+                    string[] str_format = str.Split(separator);
+                    ListViewItem item_to_add = new ListViewItem();
+                    item_to_add.Text = str_format[2];
+                    item_to_add.SubItems.Add(str_format[4]);
+                    item_to_add.SubItems.Add(str_format[6]);
+                    lvBuy.Items.Add(item_to_add);
+                }
+            }
+            catch { }
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -179,6 +198,19 @@ namespace WindowsFormsApp1
             try { lvRead.Items.AddRange(backupLvRead); }
             catch { }
            
+        }
+
+        private void btnSanveToFile_Click(object sender, EventArgs e)
+        {
+            List<String> booksToWrite = new List<string>();
+            string Book = "";
+            foreach (ListViewItem i in lvBuy.Items)
+            {
+                Book = String.Format("1$${0}$${1}$${2}$$", i.SubItems[0].Text, i.SubItems[1].Text, i.SubItems[2].Text);
+                booksToWrite.Add(Book);
+            }
+            System.IO.File.WriteAllLines(@"D:\books.dat", booksToWrite);
+
         }
 
         //Comment For Test

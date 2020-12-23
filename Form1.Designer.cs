@@ -43,6 +43,8 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSaveState = new System.Windows.Forms.Button();
             this.btnRestoreState = new System.Windows.Forms.Button();
+            this.btnSanveToFile = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -166,7 +168,7 @@
             // btnSaveState
             // 
             this.btnSaveState.Enabled = false;
-            this.btnSaveState.Location = new System.Drawing.Point(153, 537);
+            this.btnSaveState.Location = new System.Drawing.Point(153, 525);
             this.btnSaveState.Name = "btnSaveState";
             this.btnSaveState.Size = new System.Drawing.Size(188, 38);
             this.btnSaveState.TabIndex = 9;
@@ -176,7 +178,7 @@
             // 
             // btnRestoreState
             // 
-            this.btnRestoreState.Location = new System.Drawing.Point(153, 581);
+            this.btnRestoreState.Location = new System.Drawing.Point(153, 569);
             this.btnRestoreState.Name = "btnRestoreState";
             this.btnRestoreState.Size = new System.Drawing.Size(188, 38);
             this.btnRestoreState.TabIndex = 10;
@@ -184,11 +186,32 @@
             this.btnRestoreState.UseVisualStyleBackColor = true;
             this.btnRestoreState.Click += new System.EventHandler(this.btnRestoreState_Click);
             // 
+            // btnSanveToFile
+            // 
+            this.btnSanveToFile.Location = new System.Drawing.Point(153, 613);
+            this.btnSanveToFile.Name = "btnSanveToFile";
+            this.btnSanveToFile.Size = new System.Drawing.Size(188, 38);
+            this.btnSanveToFile.TabIndex = 11;
+            this.btnSanveToFile.Text = "Сохранить на диск";
+            this.btnSanveToFile.UseVisualStyleBackColor = true;
+            this.btnSanveToFile.Click += new System.EventHandler(this.btnSanveToFile_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(779, 536);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 17);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "label2";
+            // 
             // form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1077, 643);
+            this.ClientSize = new System.Drawing.Size(1077, 663);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnSanveToFile);
             this.Controls.Add(this.btnRestoreState);
             this.Controls.Add(this.btnSaveState);
             this.Controls.Add(this.btnDelete);
@@ -227,6 +250,8 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSaveState;
         private System.Windows.Forms.Button btnRestoreState;
+        private System.Windows.Forms.Button btnSanveToFile;
+        private System.Windows.Forms.Label label2;
     }
 }
 

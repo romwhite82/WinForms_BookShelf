@@ -55,7 +55,6 @@ namespace WindowsFormsApp1
             this.tbAuthor.Name = "tbAuthor";
             this.tbAuthor.Size = new System.Drawing.Size(440, 22);
             this.tbAuthor.TabIndex = 1;
-            
             // 
             // tbTitle
             // 
@@ -63,7 +62,6 @@ namespace WindowsFormsApp1
             this.tbTitle.Name = "tbTitle";
             this.tbTitle.Size = new System.Drawing.Size(440, 22);
             this.tbTitle.TabIndex = 2;
-            
             // 
             // tbYear
             // 
@@ -131,6 +129,7 @@ namespace WindowsFormsApp1
             this.Name = "Form2";
             this.Text = "Add book";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
+            this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
