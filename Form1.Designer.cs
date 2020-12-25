@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form1));
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAddBook = new System.Windows.Forms.Button();
             this.lvBuy = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -49,14 +49,14 @@
             // 
             // button1
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(469, 551);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(192, 58);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Добавить книгу";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAddBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddBook.Location = new System.Drawing.Point(469, 551);
+            this.btnAddBook.Name = "button1";
+            this.btnAddBook.Size = new System.Drawing.Size(192, 58);
+            this.btnAddBook.TabIndex = 0;
+            this.btnAddBook.Text = "Добавить книгу";
+            this.btnAddBook.UseVisualStyleBackColor = true;
+            this.btnAddBook.Click += new System.EventHandler(this.button1_Click);
             // 
             // lvBuy
             // 
@@ -219,7 +219,7 @@
             this.Controls.Add(this.lblBuy);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lvBuy);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAddBook);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -233,7 +233,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAddBook;
         public System.Windows.Forms.ListView lvBuy;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblBuy;

@@ -50,12 +50,12 @@ namespace WindowsFormsApp1
 
         void InactiveAdd()
         {
-            button1.Enabled = false; 
+            btnAddBook.Enabled = false; 
         }
 
         void ActiveAdd()
         {
-            button1.Enabled = true;
+            btnAddBook.Enabled = true;
         }
                                
        public form1() //Это конструктор класса формы
