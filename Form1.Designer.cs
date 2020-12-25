@@ -165,7 +165,6 @@
             // 
             // btnSaveState
             // 
-            this.btnSaveState.Enabled = false;
             this.btnSaveState.Location = new System.Drawing.Point(153, 525);
             this.btnSaveState.Name = "btnSaveState";
             this.btnSaveState.Size = new System.Drawing.Size(188, 38);
