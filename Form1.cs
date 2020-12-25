@@ -13,9 +13,11 @@ namespace WindowsFormsApp1
 {
     public partial class form1 : Form
     {
-        public string data;
-        public ListViewItem[] backupLvBuy;
-        public ListViewItem[] backupLvRead;
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);//путь к Документам
+        
+        //string path = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        ListViewItem[] backupLvBuy;
+        ListViewItem[] backupLvRead;
 
         class MyBooks
         {
@@ -81,17 +83,27 @@ namespace WindowsFormsApp1
 
             try
             {
-                string[] lvBuyInit = File.ReadAllLines(@"D:\books.dat");
+                string[] lvBuyInit = File.ReadAllLines($"{path}\\books.dat");
 
                 foreach (string str in lvBuyInit)
                 {
                     char[] separator = new char[] { '$', '$' };
                     string[] str_format = str.Split(separator);
                     ListViewItem item_to_add = new ListViewItem();
-                    item_to_add.Text = str_format[2];
-                    item_to_add.SubItems.Add(str_format[4]);
-                    item_to_add.SubItems.Add(str_format[6]);
-                    lvBuy.Items.Add(item_to_add);
+                    
+                    if (str_format[0]=="1")
+                    {
+                        item_to_add.Text = str_format[2];
+                        item_to_add.SubItems.Add(str_format[4]);
+                        item_to_add.SubItems.Add(str_format[6]);
+                        lvBuy.Items.Add(item_to_add);
+                    }
+                    else if(str_format[0]=="2")
+                    {
+                        item_to_add.Text = $"{str_format[2]}";
+                        lvRead.Items.Add(item_to_add);
+                    }
+                    
                 }
             }
             catch { }
@@ -202,6 +214,11 @@ namespace WindowsFormsApp1
 
         private void btnSanveToFile_Click(object sender, EventArgs e)
         {
+            if (Directory.Exists(path +"\\MyBookShelf") == false)
+            {
+                Directory.CreateDirectory(path + "\\MyBookShelf");
+            }
+            
             List<String> booksToWrite = new List<string>();
             string Book = "";
             foreach (ListViewItem i in lvBuy.Items)
@@ -209,7 +226,13 @@ namespace WindowsFormsApp1
                 Book = String.Format("1$${0}$${1}$${2}$$", i.SubItems[0].Text, i.SubItems[1].Text, i.SubItems[2].Text);
                 booksToWrite.Add(Book);
             }
-            System.IO.File.WriteAllLines(@"D:\books.dat", booksToWrite);
+
+            foreach (ListViewItem i in lvRead.Items)
+            {
+                Book = String.Format("2$${0}$$", i.SubItems[0].Text);
+                booksToWrite.Add(Book);
+            }
+            System.IO.File.WriteAllLines($"{path}\\books.dat", booksToWrite);
 
         }
 
