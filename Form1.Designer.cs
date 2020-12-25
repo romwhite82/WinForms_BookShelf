@@ -74,7 +74,6 @@
             this.lvBuy.TabIndex = 1;
             this.lvBuy.UseCompatibleStateImageBehavior = false;
             this.lvBuy.View = System.Windows.Forms.View.Details;
-            this.lvBuy.Enter += new System.EventHandler(this.lvBuy_Enter);
             // 
             // columnHeader1
             // 
@@ -121,7 +120,6 @@
             this.lvRead.TabIndex = 4;
             this.lvRead.UseCompatibleStateImageBehavior = false;
             this.lvRead.View = System.Windows.Forms.View.List;
-            this.lvRead.Enter += new System.EventHandler(this.lvRead_Enter);
             // 
             // lblRead
             // 

@@ -145,19 +145,7 @@ namespace WindowsFormsApp1
 
             
         }
-
-        private void lvBuy_Enter(object sender, EventArgs e)
-        {
-            btnOne.Text = ">";
-            btnSome.Text = ">>";
-        }
-
-        private void lvRead_Enter(object sender, EventArgs e)
-        {
-            btnOne.Text = "<";
-            btnSome.Text = "<<";
-        }
-
+                
         private void btnDelete_Click(object sender, EventArgs e)
         {
             
