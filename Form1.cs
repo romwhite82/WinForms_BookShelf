@@ -57,6 +57,58 @@ namespace WindowsFormsApp1
         {
             btnAddBook.Enabled = true;
         }
+
+        void LoadBooks (string pathToFile)
+        {
+            
+            try
+            {
+                string[] lvBuyInit = File.ReadAllLines(pathToFile);
+
+                foreach (string str in lvBuyInit)
+                {
+                    char[] separator = new char[] { '$', '$' };
+                    string[] str_format = str.Split(separator);
+                    ListViewItem item_to_add = new ListViewItem();
+
+                    if (str_format[0] == "1")
+                    {
+                        item_to_add.Text = str_format[2];
+                        item_to_add.SubItems.Add(str_format[4]);
+                        item_to_add.SubItems.Add(str_format[6]);
+                        lvBuy.Items.Add(item_to_add);
+                    }
+                    else if (str_format[0] == "2")
+                    {
+                        item_to_add.Text = $"{str_format[2]}";
+                        lvRead.Items.Add(item_to_add);
+                    }
+                }
+            }
+            catch { }
+        }
+
+        void SaveBooks(string FilePath)
+        {
+            
+            List<String> booksToWrite = new List<string>();
+            string Book = "";
+            foreach (ListViewItem i in lvBuy.Items)
+            {
+                Book = String.Format("1$${0}$${1}$${2}$$", i.SubItems[0].Text, i.SubItems[1].Text, i.SubItems[2].Text);
+                booksToWrite.Add(Book);
+            }
+
+            foreach (ListViewItem i in lvRead.Items)
+            {
+                Book = String.Format("2$${0}$$", i.SubItems[0].Text);
+                booksToWrite.Add(Book);
+            }
+            
+            System.IO.File.WriteAllLines(FilePath, booksToWrite);
+        
+        }
+
                                
        public form1() //Это конструктор класса формы
         {
@@ -80,34 +132,11 @@ namespace WindowsFormsApp1
                 }
 
             };
-
-            try
-            {
-                string[] lvBuyInit = File.ReadAllLines($"{path}\\books.dat");
-
-                foreach (string str in lvBuyInit)
-                {
-                    char[] separator = new char[] { '$', '$' };
-                    string[] str_format = str.Split(separator);
-                    ListViewItem item_to_add = new ListViewItem();
-                    
-                    if (str_format[0]=="1")
-                    {
-                        item_to_add.Text = str_format[2];
-                        item_to_add.SubItems.Add(str_format[4]);
-                        item_to_add.SubItems.Add(str_format[6]);
-                        lvBuy.Items.Add(item_to_add);
-                    }
-                    else if(str_format[0]=="2")
-                    {
-                        item_to_add.Text = $"{str_format[2]}";
-                        lvRead.Items.Add(item_to_add);
-                    }
-                    
-                }
-            }
-            catch { }
             
+            LoadBooks($"{path}\\books.dat");
+            toolStripSave.Click += saveToolStripMenuItem_Click;
+            toolStripOpen.Click += openToolStripMenuItem_Click;
+            toolStripExit.Click += exitToolStripMenuItem_Click;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -200,28 +229,57 @@ namespace WindowsFormsApp1
            
         }
 
-        private void btnSanveToFile_Click(object sender, EventArgs e)
+       
+        private void оAboutMenuItem_Click(object sender, EventArgs e)
         {
-            if (Directory.Exists(path +"\\MyBookShelf") == false)
+            MessageBox.Show("Лабораторная работа № 1 студента Карандашёва Р.Н.,\nИВТ ВМКСС 19.54, 2 курс", "About");
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var filePath = string.Empty;
+            
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = path;
+                openFileDialog.Filter = "dat files (*.dat)|*.dat";
+                
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = openFileDialog.FileName;
+                    LoadBooks(filePath);
+                }
+            }
+
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string FilePath = string.Empty;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "dat files (*.dat)|*.dat";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                FilePath = saveFileDialog1.FileName;
+            }
+            if (FilePath == string.Empty) FilePath = $"{path}\\books.dat";
+            SaveBooks(FilePath);
+        }
+
+        private void form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Directory.Exists(path + "\\MyBookShelf") == false)
             {
                 Directory.CreateDirectory(path + "\\MyBookShelf");
             }
-            
-            List<String> booksToWrite = new List<string>();
-            string Book = "";
-            foreach (ListViewItem i in lvBuy.Items)
-            {
-                Book = String.Format("1$${0}$${1}$${2}$$", i.SubItems[0].Text, i.SubItems[1].Text, i.SubItems[2].Text);
-                booksToWrite.Add(Book);
-            }
 
-            foreach (ListViewItem i in lvRead.Items)
-            {
-                Book = String.Format("2$${0}$$", i.SubItems[0].Text);
-                booksToWrite.Add(Book);
-            }
-            System.IO.File.WriteAllLines($"{path}\\books.dat", booksToWrite);
+            SaveBooks($"{path}\\books.dat");
 
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         //Comment For Test

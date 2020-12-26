@@ -49,5 +49,11 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void btnAdvanceMode_Click(object sender, EventArgs e)
+        {
+            Form3 frm = new Form3();
+            frm.Show();
+        }
     }
 }
